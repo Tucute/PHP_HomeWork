@@ -7,6 +7,22 @@
         </style>
     </head>
     <body>
+       
+        <form method="post" action="" oninput="if (month.value=='2') {
+            document.getElementById('year').style.display='block'; year.focus();} else {
+            document.getElementById('year').style.display='none';
+            }">
+            <section>
+                <label for=""> Mời bạn nhập một tháng bất kì: </label>
+                    <input type="number" name="month" min="1" max="12">
+                    <input type="submit" value="check">
+            </section>
+            <section id="year">
+                <label>Mời bạn nhập năm: </label>
+                <input type="number" name="year">
+            </section>
+        </form>
+
         <?php
         if (isset($_POST['month'])) {
             $month=$_POST['month'] ;
@@ -33,19 +49,5 @@
             } 
         }
         ?>
-        <form method="post" action="" oninput="if (month.value=='2') {
-            document.getElementById('year').style.display='block'; year.focus();} else {
-            document.getElementById('year').style.display='none';
-            }">
-            <section>
-                <label for=""> Mời bạn nhập một tháng bất kì: </label>
-                    <input type="number" name="month" min="1" max="12">
-                    <input type="submit" value="check">
-            </section>
-            <section id="year">
-                <label>Mời bạn nhập năm: </label>
-                <input type="number" name="year">
-            </section>
-        </form>
     </body>
 </html>
