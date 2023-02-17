@@ -18,7 +18,7 @@
             $dvchuc=$temp%10;
             $temp=$temp/10;
             $dvtram= $temp%10;
-            $temp=$temp/10;
+            $temp=$temp/10; 
             $dvtrieu= $temp%10;
 
             $sl5tram=0;

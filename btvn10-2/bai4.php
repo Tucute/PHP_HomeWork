@@ -17,22 +17,38 @@
     </form>
 
     <?php
-    if (isset($_POST['number1']) && isset($_POST['number2'])  ) {
-        $number1=$_POST['number1'];
-        $number2=$_POST['number2'];
-        $str='';
-        for ($i=$number1;$i<=$number2;$i++) {
-            if ($i%3==0) {
-                $str = $str.(string)$i."," ;
+    // if (isset($_POST['number1']) && isset($_POST['number2'])  ) {
+    //     $number1=$_POST['number1'];
+    //     $number2=$_POST['number2'];
+    //     $str='';
+    //     for ($i=$number1;$i<=$number2;$i++) {
+    //         if ($i%3==0) {
+    //             $str = $str.(string)$i."," ;
+    //         }
+    //     }  
+    //     if ($str==''){
+    //         echo"Không có số nào chia hết cho 3";
+    //     }
+    //     else {
+    //         echo"Các số chia hết cho 3 trong khoảng $number1 đến $number2 là $str";
+    //     }
+    // }    
+    if (isset($_POST['btn'])) {
+            $number1=$_POST['number1'];
+            $number2=$_POST['number2'];
+            $str='';
+            for ($i=$number1;$i<=$number2;$i++) {
+                if ($i%3==0) {
+                    $str = $str.(string)$i."," ;
+                }
+            }  
+            if ($str==''){
+                echo"Không có số nào chia hết cho 3";
             }
-        }  
-        if ($str==''){
-            echo"Không có số nào chia hết cho 3";
+            else {
+                echo"Các số chia hết cho 3 trong khoảng $number1 đến $number2 là $str";
+            }
         }
-        else {
-            echo"Các số chia hết cho 3 trong khoảng $number1 đến $number2 là $str";
-        }
-    }    
         ?>
 </body>
 </html>

@@ -40,6 +40,7 @@
     </style>
 </head>
 <body>
+    
     <div class="container">
         <form action="" method="post">
             <div class="section-top">
@@ -50,8 +51,8 @@
                     <h2>Mô phỏng máy ATM</h2>
                     <p>Vui lòng nhập vào số tiền quý khách muốn thực hiện giao dịch</p>
                     <div class="content">
-                        <input type="number" style="width:20em" name="number">
-                        <input type="submit" value="Rút tiền">
+                        <input type="number" style="width:20em" name="money" value="<?php if(isset($_POST['money'])) echo $_POST['money'] ?>">
+                        <input type="submit" name="btn" value="Rút tiền">
                     </div>
                 </div>
             </div>
@@ -66,8 +67,8 @@
                     </thead>
                     <tbody>
                     <?php
-        if (isset($_POST['number'])) {
-            $coins = $_POST['number'];
+        if (isset($_POST['btn'])) {
+            $coins = $_POST['money'];
 
             $temp=$coins/10000;
 
@@ -158,6 +159,14 @@
             }
             $Tong= (500*$sl5tram + 200*$sl2tram + 100*$sl1tram + 50*$sl5chuc +  20*$sl2chuc + 10*$sl1chuc) * 1000;
 
+
+            echo `
+            "<tr>";
+            " <td> Mệnh giá 500.000 </td>" ;  
+            " <td> $sl5tram </td>";
+            "<tr>";
+            `;
+
             echo "<tr>";
             echo " <td> Mệnh giá 500.000 </td>" ;   
             echo " <td> $sl5tram </td>";
@@ -188,11 +197,6 @@
             echo " <td> $sl1chuc  </td>";
             echo " <td>".number_format(10000*$sl1chuc)."</td>"; 
             echo "</tr>";
-            // echo "<br>";
-            // echo"Mệnh giá: 20.000     Số lượng: $sl2chuc   Tổng số tiền: ".number_format(20000*$sl2chuc); 
-            // echo "<br>";
-            // echo"Mệnh giá: 10.000     Số lượng: $sl1chuc  Tổng số tiền: ".number_format(10000*$sl1chuc); 
-            // echo "<br>";
             echo "<tr>";
             echo "</tr>";
             echo "<tr>";
