@@ -49,7 +49,7 @@
         <div class="add">
             <h5>Thêm sản phẩm </h5>
             <button class="btn btn-primary" type="submit" name="submit">
-                <a href="http://localhost/Tu_PHP/Themsuaxoa-db/them.php">Thêm +</a>
+                <a href="http://localhost/Demo1/Tu_PHP/Themsuaxoa-db/them.php">Thêm +</a>
             </button>
         </div>
         <table class="table">
@@ -65,7 +65,7 @@
             </thead>
             <tbody>
                 <?php
-                    $sql = mysqli_query($conn, "SELECT*FROM product");
+                    $sql = mysqli_query($conn, "SELECT*FROM products");
                     // $row = mysqli_fetch_assoc($sql);
                     $j=1;
                     while ($row= mysqli_fetch_assoc($sql)) {
@@ -76,25 +76,47 @@
                                 <?php echo $j ?>
                             </td>
                             <td>
-                                <?php echo $row["name"]; ?>
+                                <?php echo $row["names"]; ?>
                             </td>
                             <td>
                                 <?php echo $row["price"]; ?>
                             </td>
                             <td>
-                                <?php echo $row["describe"]; ?>
+                                <?php echo $row["describes"]; ?>
                             </td>
                             <td>
-                                <img src="<?php echo $row["img"]; ?>" alt="" width="100px" height="70px">
+                                <img src="<?php echo $row["file"]; ?>" alt="" width="100px" height="70px">
                             </td>
                             <td>
                                 <button class='btn btn-warning'>
-                                    <a href="http://localhost/Tu_PHP/Themsuaxoa-array/sua.php? id=<?php echo $row["id"] ?>">Edit</a>
+                                    <a href="http://localhost/Demo1/Tu_PHP/Themsuaxoa-db/sua.php?id=<?php echo $row["id"] ?>">Edit</a>
                                 </button>
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal">
                                     Delete
                                 </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Cảnh cáo</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <img src="https://www.clipartmax.com/png/middle/248-2486494_tam-gi%C3%A1c-c%E1%BA%A3nh-b%C3%A1o.png"
+                                                    style="padding-right: 20px;" width="120px" height="70px">
+                                                Bạn có chắc muốn xóa sản phẩm này
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                                <button type="button" class="btn btn-primary">
+                                                    <a href="http://localhost/Demo1/Tu_PHP/Themsuaxoa-db/xoa.php?id=<?php echo $row["id"] ?>"> Đồng ý</a>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
 
@@ -104,27 +126,6 @@
                 ?>
             </tbody>
         </table>
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Cảnh cáo</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <img src="https://www.clipartmax.com/png/middle/248-2486494_tam-gi%C3%A1c-c%E1%BA%A3nh-b%C3%A1o.png"
-                            style="padding-right: 20px;" width="120px" height="70px">
-                        Bạn có chắc muốn xóa sản phẩm này
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                        <button type="button" class="btn btn-primary">Đồng ý</button>
-                    </div>
-                </div>
-            </div>
-        </div>
 
     </div>
 

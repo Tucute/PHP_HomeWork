@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$db = "tu_php";
+$db = "tu_database";
 global $conn;
 $conn =  mysqli_connect("localhost", "root", "");
 if (!$conn){

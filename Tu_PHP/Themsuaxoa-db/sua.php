@@ -1,12 +1,12 @@
 <?php
-include "db.php";
-global $conn;
+    include "db.php";
+    global $conn;
 ?>
 <!doctype html>
 <html lang="en">
 
 <head>
-    <title>Title</title>
+    <title>Sửa</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -31,50 +31,50 @@ global $conn;
 </head>
 
 <body>
+    <?php
+        $id=$_GET['id'];
+        $ql=mysqli_query($conn, "SELECT*from products where id=$id");
+        $row=mysqli_fetch_assoc($ql);
+    ?>
+    <?php
+        if (isset($_POST['btnOk'])) {
+            $name = $_POST['name'];
+            $price = $_POST['price'];
+            $describe = $_POST['describe'];
+            $file = $_POST['file'];
+            $sql="UPDATE products SET names='$name',price='$price',describes='$describe',file='$file' WHERE id = $id ";
+
+            if(mysqli_query($conn,$sql)) {
+               echo "Kết nối thành công !";
+               header("Location: index.php"); 
+            }
+            else {
+                echo"Kết nối lỗi". mysqli_error($conn);
+            }
+        }
+    
+    ?>
+    
     <div class="container">
-        <h3>Thêm sản phẩm</h3>
+        <h3>Cập nhật sản phẩm sản phẩm</h3>
         <br>
         <form method="post">
             <label>Nhập tên sản phẩm: </label>
-            <input class="form-control form-control-sm" type="text" name="name">
+            <input class="form-control form-control-sm" type="text" name="name" value="<?php echo $row['names'] ?>">
             <br>
             <label>Giá sản phẩm: </label>
-            <input class="form-control form-control-sm" type="number" name="price">
+            <input class="form-control form-control-sm" type="number" name="price" value="<?php echo $row['price'] ?>">
             <br>
             <label>Mô tả: </label>
-            <input class="form-control form-control-sm" type="text" name="describe">
+            <input class="form-control form-control-sm" type="text" name="describe" value="<?php echo $row['describes'] ?>">
             <br>
             <label>Link hình ảnh: </label>
-            <input class="form-control form-control-sm" type="link" name="file">
+            <input class="form-control form-control-sm" type="link" name="file" value="<?php echo $row['file'] ?>">
             <br>
-            <button type="submit" name="btn" class="btn btn-primary">Thêm</button>
+            <button type="submit" name="btnOk" class="btn btn-primary">Update</button>
         </form>
     </div>
-    <?php
-    if (isset($_POST['btn'])) {
-        $name = $_POST['name'];
-        $price = $_POST['price'];
-        $describe = $_POST['describe'];
-        $file = $_POST['file'];
 
-        if ($name == '') {
-            echo "<script> alert('Vui lòng nhập tên sản phẩm') </script>";
-        }
-        if ($price == '') {
-            echo "<script> alert('Vui lòng nhập giá của sản phẩm') </script>";
-        }
-        if ($name != '' && $price != '') {
-            $sql = "INSERT INTO products (names, price, describes, file) VALUES ('$name','$price','$describe','$file')";
-            if (mysqli_query($conn, $sql)) {
-                echo "New record created successfully";
-                header("Location: index.php");
-            } else {
-                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-            }
-
-        }
-    }
-    ?>
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">

@@ -43,7 +43,7 @@
         <div class="add">
             <h5>Thêm sản phẩm </h5> 
             <button class="btn btn-primary" type="submit" name="submit">
-                <a href="http://localhost/Tu_PHP/Themsuaxoa-array/them.php">Thêm +</a>
+                <a href="http://localhost/Demo1/Tu_PHP/Themsuaxoa-array/them.php">Thêm +</a>
             </button>
         </div>
         <table class="table">
@@ -98,15 +98,39 @@
                     <td><?php echo $fruit[$i]["gia"] ?></td>
                     <td><?php echo $fruit[$i]["mota"] ?></td>
                     <td>
-                        <img src="<?php echo $fruit[$i]["file"] ?>" alt="">
+                        <img src="<?php echo $fruit[$i]["file"] ?>" alt="" width="40px" height="50px">
                     </td>
                     <td>
                         <button class='btn btn-warning'>
-                            <a href="http://localhost/Tu_PHP/Themsuaxoa-array/sua.php? id=<?php echo $i ?>">Edit</a>
+                            <a href="http://localhost/Demo1/Tu_PHP/Themsuaxoa-array/sua.php? id=<?php echo $i ?>">Sửa</a>
                         </button>
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Delete
+                            Xóa
                         </button>
+                        <!-- <button class='btn btn-danger'>
+                            
+                        </button> -->
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header"> 
+                                    <h5 class="modal-title" id="exampleModalLabel">Cảnh cáo</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="https://www.clipartmax.com/png/middle/248-2486494_tam-gi%C3%A1c-c%E1%BA%A3nh-b%C3%A1o.png" style="padding-right: 20px;" width="120px" height="70px">
+                                    Bạn có chắc muốn xóa sản phẩm này
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                    <button type="button" class="btn btn-primary" name="btnOk">
+                                        <a href="http://localhost/Demo1/Tu_PHP/Themsuaxoa-array/xoa.php? id=<?php echo $i ?>">Đồng ý</a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
                     </td>
                 </tr>
                 
@@ -118,26 +142,6 @@
                 ?>   
             </tbody>
             </table>
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Cảnh cáo</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <img src="https://www.clipartmax.com/png/middle/248-2486494_tam-gi%C3%A1c-c%E1%BA%A3nh-b%C3%A1o.png" style="padding-right: 20px;" width="120px" height="70px">
-                    Bạn có chắc muốn xóa sản phẩm này
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                    <button type="button" class="btn btn-primary">Đồng ý</button>
-                </div>
-                </div>
-            </div>
-            </div>
         
     </div>
 
