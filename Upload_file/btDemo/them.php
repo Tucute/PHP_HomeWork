@@ -32,23 +32,22 @@
     <div class="container">
         <h3>Thêm sản phẩm</h3>
         <br>
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <label>Nhập tên sản phẩm: </label>
             <input class="form-control form-control-sm" type="text" name="name">
             <br>
             <label>Giá sản phẩm: </label>
             <input class="form-control form-control-sm" type="number" name="price">
             <br>
-            <label>Link hình ảnh: </label>
+            <label>Thêm hình ảnh: </label>
             <input class="form-control form-control-sm" type="file" name="file_up">
             <br>
             <button type="submit" name="btn" class="btn btn-primary">Thêm</button>
         </form>
     </div>
-    <?php
+        <?php
             $product=array();
             if (isset($_POST['btn'])) {
-                // $fruits[]=["ten"=>$_POST['name'],"gia"=>$_POST['price'],"mota"=>$_POST['describe'],"file"=>$_POST['file'] ];
                 $n=count($product);
                 $product[$n]["ten"]=$_POST['name'];
                 $product[$n]["gia"]=$_POST['price'];
@@ -56,17 +55,13 @@
                     $file=$_FILES['file_up'];
                     $tenfile=$file['name'];
                     move_uploaded_file($file['tmp_name'],$tenfile);
-                    // $product[$n]["file"]=$FILES['file_up']['name'];
+                    $product[$n]["file"]=$tenfile;
+                    }
+                    
+                    $_SESSION['array']=$product;
+                    header("Location: index.php");
                 }
-                echo "<img src='$tenfile' >";
-    
-                $_SESSION['array']=$product;
-                // header("Location: index.php");
-            }
-
-        
-        
-    ?>  
+            ?>
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
