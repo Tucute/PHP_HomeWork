@@ -20,7 +20,6 @@
     ?>
     <img src="<?php echo $tenfile ?>" alt="">
     <?php
-
             }
         }
     ?>
