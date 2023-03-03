@@ -46,7 +46,7 @@
         </form>
     </div>
         <?php
-            $product=array();
+            $product=$_SESSION['array'];
             if (isset($_POST['btn'])) {
                 $n=count($product);
                 $product[$n]["ten"]=$_POST['name'];

@@ -49,10 +49,10 @@
                     </td>
                     <td>
                         <button class='btn btn-warning'>
-                            <a href="http://localhost/Demo1/btvn-session/update.php? id=<?php echo $i ?>">Edit</a>
+                            <a href="http://localhost/Demo1/Upload_file/btDemo/sua.php? id=<?php echo $i ?>">Edit</a>
                         </button>
                         <button class='btn btn-warning'>
-                            <a href="http://localhost/Demo1/btvn-session/delete.php? id=<?php echo $i ?>">Delete</a>
+                            <a href="http://localhost/Demo1/Upload_file/btDemo/xoa.php? id=<?php echo $i ?>">Delete</a>
                         </button>
                     </td>
                 </tr>

@@ -8,7 +8,8 @@
 </head>
 <body>
     <?php
-        
+       $product=array();
+       $_SESSION['array']=$product; 
     ?>
 </body>
 </html>
