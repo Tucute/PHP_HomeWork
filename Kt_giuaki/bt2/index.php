@@ -42,8 +42,17 @@
             text-align: center;
             border-top: 1px solid orange;
             padding-top: 40px;
+            display: flex;
+            text-align: center;
         }
-
+        #bt {
+            margin-left: 650px;
+        }
+        
+        a {
+            text-decoration: none;
+            color: white;
+        }
     </style>
 </head>
 
@@ -55,7 +64,11 @@
         </div>
         <br>
         <form action="" method='post'>
-        <h4>GIÀY DÉP</h4>
+        <h4>GIÀY DÉP
+            <button id="bt" class='btn btn-primary'>
+                <a href="http://localhost/Demo1/Kt_giuaki/bt2/themgiay.php"> Thêm sản phẩm giày </a>
+            </button>
+        </h4>
         <div class="row">
             
             <?php
@@ -89,7 +102,11 @@
             ?>
         </div>
         <br>
-        <h4>TÚI XÁCH</h4>
+        <h4>TÚI XÁCH
+            <button id="bt" class='btn btn-primary'>
+                <a href="http://localhost/Demo1/Kt_giuaki/bt2/themtui.php"> Thêm sản phẩm túi</a>
+            </button>
+        </h4>
         <div class="row">
         <?php
             $array=$_SESSION['tui'];

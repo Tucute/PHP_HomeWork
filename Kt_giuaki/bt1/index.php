@@ -66,7 +66,7 @@
                         return "Firstname không được để rỗng <br>";
                     }
                     else {
-                        if(is_string($firstname)) {
+                        if( is_string($firstname) === 1) {
                             return "true";                       
                         }
                         else {
@@ -79,7 +79,7 @@
                         return "Lastname không được để rỗng <br>";
                     }
                     else {
-                        if(is_string($lastname)) {
+                        if(is_string($lastname) === 1) {
                             return "true";
                         }
                         else {
@@ -92,8 +92,8 @@
                         if(empty($pass)){
                             return "Mật khẩu không được để rỗng <br>";
                         }
-                        elseif($n>=8) {
-                            return "Mật khẩu không quá 8 kí tự <br>";  
+                        elseif($n<8) {
+                            return "Mật khẩu ít nhất 8 kí tự <br>";  
                         }
                         else {
                             return "true";

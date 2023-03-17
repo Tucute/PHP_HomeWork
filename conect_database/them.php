@@ -1,7 +1,4 @@
-<?php
-include "db.php";
-global $conn;
-?>
+
 <!doctype html>
 <html lang="en">
 
@@ -34,49 +31,57 @@ global $conn;
     <div class="container">
         <h3>Thêm sản phẩm</h3>
         <br>
-        <form method="post" >
+        <form method="post" enctype="multipart/form-data">
+            <label>Nhập mã Sản Phẩm: </label>
+            <input class="form-control form-control-sm" type="text" name="maSP">            
+            <br>
             <label>Nhập tên sản phẩm: </label>
-            <input class="form-control form-control-sm" type="text" name="name">            
+            <input class="form-control form-control-sm" type="text" name="tenSP">            
             <br>
-            <label>Giá sản phẩm: </label>
-            <input class="form-control form-control-sm" type="number" name="price">
+            <label>Đơn vị tính: </label>
+            <input class="form-control form-control-sm" type="text" name="donvi">
             <br>
-            <label>Mô tả: </label>
-            <input class="form-control form-control-sm" type="text" name="describe">
+            <label>Giá tiền: </label>
+            <input class="form-control form-control-sm" type="number" name="gia">
+            <br>
+            <label>Số lượng: </label>
+            <input class="form-control form-control-sm" type="number" name="soluong">
             <br>
             <label>Chọn hình ảnh: </label>
-            <input class="form-control form-control-sm" type="file" name="file">
+            <input class="form-control form-control-sm" type="file" name="file_anh">
             <br>
-            <button type="submit" name="btn" class="btn btn-primary">Thêm</button>
+            <button type="submit" name="btn" class="btn btn-primary">Thêm mới</button>
         </form>
     </div>
     <?php
     if (isset($_POST['btn'])) {
-        $name = $_POST['name'];
-        $price = $_POST['price'];
-        $describe = $_POST['describe'];
-        if (isset($_FILES['file'])) {
-            $nameFile = $_FILES['file'];
-            move_uploaded_file($nameFile['tmp_name'], $nameFile['name']);
-            $file =  $nameFile['name'];
-        }
-        
+        $connect = mysqli_connect("localhost","root","","tu_database") or die("connect fail !");
 
-        if ($name == '') {
-            echo "<script> alert('Vui lòng nhập tên sản phẩm') </script>";
+        $maSP = $_POST['maSP'];
+        $tenSP = $_POST['tenSP'];
+        $donvi = $_POST['donvi'];
+        $gia = $_POST['gia'];
+        $soluong = $_POST['soluong'];
+
+        if (isset($_FILES['file_anh'])) {
+            $nameFile = $_FILES['file_anh'];
+            move_uploaded_file($nameFile['tmp_name'], $nameFile['name']);
+            $hinhanh =  $nameFile['name'];
         }
-        if ($price == '') {
-            echo "<script> alert('Vui lòng nhập giá của sản phẩm') </script>";
+
+        $check=mysqli_query($connect,"SELECT*FROM sanpham where maSP = '$maSP' ");
+        $dem = mysqli_num_rows($check);
+        if($dem>0){
+            echo "Mã sản phẩm đã tồn tại! Vui lòng nhập lại mã sản phẩm";
         }
-        if ($name != '' && $price != '') {
-            $sql = "INSERT INTO products (names, price, describes, file) VALUES ('$name','$price','$describe','$file')";
-            if (mysqli_query($conn, $sql)) {
-                echo "New record created successfully";
+        else {
+
+            $sql = "INSERT INTO sanpham (maSP, tenSP, Donvi, gia, SoLuong, Anh) VALUES ('$maSP','$tenSP','$donvi',$gia,$soluong,'$hinhanh')";
+            if (mysqli_query($connect, $sql)) {
                 header("Location: index.php");
             } else {
-                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                echo "Error: " . $sql . "<br>" . mysqli_error($connect);
             }
-
         }
     }
     ?>
